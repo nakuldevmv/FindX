@@ -11,13 +11,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'FindX',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black87),
-        useMaterial3: true,
-      ),
-      home: const findX(),
+      debugShowCheckedModeBanner: false,
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.black87),
+      //   useMaterial3: true,
+      // ),
+      home: findX(),
     );
   }
 }
