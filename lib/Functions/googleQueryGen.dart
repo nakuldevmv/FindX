@@ -8,5 +8,6 @@ googleQueryGen(String x) {
 
   // Construct the final Google search URL
   String googleSearchUrl = 'https://www.google.com/search?q=$encodedQuery';
-  urlLaunch(googleSearchUrl);
+  print(googleSearchUrl);
+  // urlLaunch(googleSearchUrl);
 }

@@ -1,5 +1,5 @@
 final Map<String, Set<String>> fileFormats = {
-  "DocumentAndTextFiles": {
+  "Document And TextFiles": {
     "doc",
     "docx",
     "odt",
@@ -20,7 +20,7 @@ final Map<String, Set<String>> fileFormats = {
     "mobi",
     "azw",
   },
-  "DataAndDatabaseFiles": {
+  "Data And DatabaseFiles": {
     "db",
     "sql",
     "sqlite",
@@ -39,7 +39,7 @@ final Map<String, Set<String>> fileFormats = {
     "kml",
     "geojson",
   },
-  "ImageFiles": {
+  "Image Files": {
     "jpg",
     "jpeg",
     "png",
@@ -56,7 +56,7 @@ final Map<String, Set<String>> fileFormats = {
     "stl",
     "3ds",
   },
-  "AudioFiles": {
+  "Audio Files": {
     "mp3",
     "aac",
     "ogg",
@@ -70,7 +70,7 @@ final Map<String, Set<String>> fileFormats = {
     "mod",
     "xm",
   },
-  "VideoFiles": {
+  "Video Files": {
     "mp4",
     "avi",
     "mkv",
@@ -83,7 +83,7 @@ final Map<String, Set<String>> fileFormats = {
     "m2ts",
     "mts",
   },
-  "CompressedAndArchiveFiles": {
+  "Compressed And ArchiveFiles": {
     "zip",
     "rar",
     "7z",
@@ -95,7 +95,7 @@ final Map<String, Set<String>> fileFormats = {
     "dmg",
     "bin",
   },
-  "ExecutableAndScriptFiles": {
+  "Executable And ScriptFiles": {
     "exe",
     "bat",
     "com",
@@ -109,7 +109,7 @@ final Map<String, Set<String>> fileFormats = {
     "deb",
     "pkg",
   },
-  "ProgrammingAndSourceCodeFiles": {
+  "Programming And Source Code Files": {
     "class",
     "jar",
     "dll",
@@ -135,7 +135,7 @@ final Map<String, Set<String>> fileFormats = {
     "yml",
     "env",
   },
-  "WebAndInternetFiles": {
+  "Web And Internet Files": {
     "html",
     "htm",
     "asp",
@@ -148,7 +148,7 @@ final Map<String, Set<String>> fileFormats = {
     "webmanifest",
     "appcache",
   },
-  "SystemAndConfigurationFiles": {
+  "System And Configuration Files": {
     "sys",
     "dll",
     "drv",
@@ -162,7 +162,7 @@ final Map<String, Set<String>> fileFormats = {
     "plist",
     "log",
   },
-  "FontFiles": {
+  "Font Files": {
     "ttf",
     "otf",
     "woff",
@@ -170,7 +170,7 @@ final Map<String, Set<String>> fileFormats = {
     "eot",
     "pfb",
   },
-  "MiscellaneousAndOtherSpecializedFiles": {
+  "Miscellaneous And Other Specialized Files": {
     "dwg",
     "dxf",
     "hdf",
