@@ -31,7 +31,7 @@ class _findXState extends State<findX> {
     String val = '';
     // Format the output string
     if (selectedList.isEmpty) {
-      val = 'No file types selected';
+      val = '';
     } else if (selectedList.length == 1) {
       val = selectedList.first;
     } else {
@@ -67,76 +67,151 @@ class _findXState extends State<findX> {
           children: [
             //heading
             Container(
-              height: 100,
+              // height: 100,
               width: devicewidth,
               color: const Color.fromARGB(255, 0, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const Text(
-                    "FindX",
-                    style: TextStyle(color: Colors.blueGrey, fontSize: 50),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 17),
-                    child: Row(
+              child: devicewidth > 500
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        SizedBox(
-                          width: 300,
-                          height: 40,
-                          child: TextField(
-                            style: const TextStyle(color: Colors.white),
-                            cursorHeight: 20,
-                            controller: controller,
-                            decoration: const InputDecoration(
-                              labelText: 'Search..',
-                              labelStyle: TextStyle(color: Color.fromARGB(255, 165, 165, 165)),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                                borderSide: BorderSide(color: Color.fromARGB(134, 255, 0, 0), width: 2),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                                borderSide: BorderSide(color: Colors.blueGrey, width: 2),
-                              ),
-                            ),
-                            cursorColor: const Color.fromARGB(255, 134, 134, 134), // Change cursor color when focused
-                          ),
+                        const Text(
+                          "FindX",
+                          style: TextStyle(color: Colors.blueGrey, fontSize: 50),
                         ),
                         const SizedBox(
                           width: 10,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            googleQueryGen(getSelectedFormatsString(), submitInput());
-                            // submitInput();
-                            // print(getSelectedFormatsString());
-                            // getSelectedFormatsString();
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 17),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              SizedBox(
+                                width: 300,
+                                height: 40,
+                                child: TextField(
+                                  style: const TextStyle(color: Colors.white),
+                                  cursorHeight: 20,
+                                  controller: controller,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Search..',
+                                    labelStyle: TextStyle(color: Color.fromARGB(255, 165, 165, 165)),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      borderSide: BorderSide(color: Color.fromARGB(134, 255, 0, 0), width: 2),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      borderSide: BorderSide(color: Colors.blueGrey, width: 2),
+                                    ),
+                                  ),
+                                  cursorColor: const Color.fromARGB(255, 134, 134, 134), // Change cursor color when focused
                                 ),
-                                color: Colors.blueGrey),
-                            child: const Icon(
-                              Icons.search_rounded,
-                              size: 25,
-                            ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  googleQueryGen(context, getSelectedFormatsString(), submitInput());
+                                  // submitInput();
+                                  // print(getSelectedFormatsString());
+                                  // getSelectedFormatsString();
+                                },
+                                child: MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5),
+                                        ),
+                                        color: Colors.blueGrey),
+                                    child: const Icon(
+                                      Icons.search_rounded,
+                                      size: 25,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
+                        )
+                      ],
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "FindX",
+                          style: TextStyle(color: Colors.blueGrey, fontSize: 50),
                         ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 17),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 300,
+                                height: 40,
+                                child: TextField(
+                                  style: const TextStyle(color: Colors.white),
+                                  cursorHeight: 20,
+                                  controller: controller,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Search..',
+                                    labelStyle: TextStyle(color: Color.fromARGB(255, 165, 165, 165)),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      borderSide: BorderSide(color: Color.fromARGB(134, 255, 0, 0), width: 2),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      borderSide: BorderSide(color: Colors.blueGrey, width: 2),
+                                    ),
+                                  ),
+                                  cursorColor: const Color.fromARGB(255, 134, 134, 134), // Change cursor color when focused
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  googleQueryGen(context, getSelectedFormatsString(), submitInput());
+                                  // submitInput();
+                                  // print(getSelectedFormatsString());
+                                  // getSelectedFormatsString();
+                                },
+                                child: MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5),
+                                        ),
+                                        color: Colors.blueGrey),
+                                    child: const Icon(
+                                      Icons.search_rounded,
+                                      size: 25,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  )
-                ],
-              ),
             ),
 
             //select file type
@@ -151,7 +226,7 @@ class _findXState extends State<findX> {
                   ),
                 ),
                 SizedBox(
-                  height: deviceheight - 150,
+                  height: devicewidth > 500 ? deviceheight - 150 : deviceheight - 180,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                     child: ListView(
