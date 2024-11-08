@@ -2,16 +2,16 @@ import 'package:findx/Data/fileTypes.dart';
 import 'package:findx/Functions/googleQueryGen.dart';
 import 'package:flutter/material.dart';
 
-class findX extends StatefulWidget {
-  const findX({super.key});
+class FindX extends StatefulWidget {
+  const FindX({super.key});
 
   @override
-  State<findX> createState() => _findXState();
+  State<FindX> createState() => _FindXState();
 }
 
-class _findXState extends State<findX> {
+class _FindXState extends State<FindX> {
   Map<String, bool> selectedFormats = {};
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -42,35 +42,33 @@ class _findXState extends State<findX> {
 
   @override
   Widget build(BuildContext context) {
-    double devicewidth = MediaQuery.of(context).size.width;
-    double deviceheight = MediaQuery.of(context).size.height;
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
 
     String userInput = '';
 
     String submitInput() {
       setState(() {
-        userInput = controller.text;
+        userInput = _controller.text;
       });
-      // controller.clear();
+      // _controller.clear();
       return userInput;
-      // print(userInput);
-      // Clear the text field after submission
     }
 
     return Scaffold(
-      body: SizedBox(
+      body: Container(
+        color: Colors.grey,
         height: double.infinity,
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            //heading
+            // Heading
             Container(
-              // height: 100,
-              width: devicewidth,
-              color: const Color.fromARGB(255, 0, 0, 0),
-              child: devicewidth > 500
+              decoration: const BoxDecoration(color: Color.fromARGB(255, 0, 0, 0), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))),
+              width: deviceWidth,
+              child: deviceWidth > 500
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -93,7 +91,7 @@ class _findXState extends State<findX> {
                                 child: TextField(
                                   style: const TextStyle(color: Colors.white),
                                   cursorHeight: 20,
-                                  controller: controller,
+                                  controller: _controller,
                                   decoration: const InputDecoration(
                                     labelText: 'Search..',
                                     labelStyle: TextStyle(color: Color.fromARGB(255, 165, 165, 165)),
@@ -115,9 +113,6 @@ class _findXState extends State<findX> {
                               GestureDetector(
                                 onTap: () {
                                   googleQueryGen(context, getSelectedFormatsString(), submitInput());
-                                  // submitInput();
-                                  // print(getSelectedFormatsString());
-                                  // getSelectedFormatsString();
                                 },
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
@@ -164,7 +159,7 @@ class _findXState extends State<findX> {
                                 child: TextField(
                                   style: const TextStyle(color: Colors.white),
                                   cursorHeight: 20,
-                                  controller: controller,
+                                  controller: _controller,
                                   decoration: const InputDecoration(
                                     labelText: 'Search..',
                                     labelStyle: TextStyle(color: Color.fromARGB(255, 165, 165, 165)),
@@ -186,9 +181,6 @@ class _findXState extends State<findX> {
                               GestureDetector(
                                 onTap: () {
                                   googleQueryGen(context, getSelectedFormatsString(), submitInput());
-                                  // submitInput();
-                                  // print(getSelectedFormatsString());
-                                  // getSelectedFormatsString();
                                 },
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
@@ -214,7 +206,7 @@ class _findXState extends State<findX> {
                     ),
             ),
 
-            //select file type
+            // Select file type
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -222,11 +214,11 @@ class _findXState extends State<findX> {
                   padding: EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 10),
                   child: Text(
                     "Select the file type you would like to search from the options below.",
-                    style: TextStyle(color: Colors.grey, fontSize: kDefaultFontSize),
+                    style: TextStyle(color: Colors.black87, fontSize: kDefaultFontSize),
                   ),
                 ),
                 SizedBox(
-                  height: devicewidth > 500 ? deviceheight - 150 : deviceheight - 180,
+                  height: deviceWidth > 500 ? deviceHeight - 150 : deviceHeight - 180,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                     child: ListView(
@@ -263,19 +255,6 @@ class _findXState extends State<findX> {
                             ],
                           );
                         }),
-                        // const SizedBox(height: 20),
-
-                        // // Button to show selected formats
-                        // ElevatedButton(
-                        //   onPressed: () {
-                        //     String query = getSelectedFormatsString();
-                        //     googleQueryGen(query); // Pass the query to googleQueryGen
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //       SnackBar(content: Text(query)),
-                        //     );
-                        //   },
-                        //   child: const Text('Show Selected Formats'),
-                        // ),
                       ],
                     ),
                   ),
