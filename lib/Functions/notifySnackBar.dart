@@ -10,7 +10,8 @@ void notifySnackBar(
 
   // Create a default SnackBar
   final snackBar = SnackBar(
-    content: Text(message),
+    backgroundColor: Colors.black45,
+    content: Center(child: Text(message)),
     duration: duration,
   );
 

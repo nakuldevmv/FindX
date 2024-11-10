@@ -19,7 +19,7 @@ class _FindXState extends State<FindX> {
   static const surfaceColor = Color(0xFF242632); // Lighter navy
   static const primaryColor = Color(0xFF6C63FF); // Vibrant purple
   static const secondaryColor = Color(0xFF00D9B5); // Turquoise
-  static const accentColor = Color(0xFFFF6B6B); // Coral
+  // static const accentColor = Color(0xFFFF6B6B); // Coral
   static const textColor = Color(0xFFF7F7F7); // Off-white
   static const secondaryText = Color(0xFFB4B4B4); // Light gray
 

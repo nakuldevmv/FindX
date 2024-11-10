@@ -10,19 +10,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'FindX',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
-        useMaterial3: true,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          foregroundColor: Color.fromARGB(255, 0, 0, 0),
-        ),
-      ),
-      home: const FindX(),
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
+      //   useMaterial3: true,
+      //   scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      //   appBarTheme: const AppBarTheme(
+      //     backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      //     foregroundColor: Color.fromARGB(255, 0, 0, 0),
+      //   ),
+      // ),
+      home: FindX(),
     );
   }
 }
