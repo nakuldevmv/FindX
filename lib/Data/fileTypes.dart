@@ -1,5 +1,5 @@
 final Map<String, Set<String>> fileFormats = {
-  "Document And TextFiles": {
+  "Document And Text Files": {
     "doc",
     "docx",
     "odt",
@@ -64,7 +64,7 @@ final Map<String, Set<String>> fileFormats = {
     "m2ts",
     "mts",
   },
-  "Data And DatabaseFiles": {
+  "Data And Database Files": {
     "db",
     "sql",
     "sqlite",
@@ -83,7 +83,7 @@ final Map<String, Set<String>> fileFormats = {
     "kml",
     "geojson",
   },
-  "Compressed And ArchiveFiles": {
+  "Compressed And Archive Files": {
     "zip",
     "rar",
     "7z",
@@ -95,7 +95,7 @@ final Map<String, Set<String>> fileFormats = {
     "dmg",
     "bin",
   },
-  "Executable And ScriptFiles": {
+  "Executable And Script Files": {
     "exe",
     "bat",
     "com",
@@ -170,7 +170,7 @@ final Map<String, Set<String>> fileFormats = {
     "eot",
     "pfb",
   },
-  "Miscellaneous And Other Specialized Files": {
+  "Other Files": {
     "dwg",
     "dxf",
     "hdf",

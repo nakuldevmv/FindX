@@ -31,6 +31,14 @@
 
   <title>FindX</title>
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <script>
+    window.addEventListener('load', function() {
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FF5733'); // Replace with your preferred color
+    });
+</script>
+
+
 <!--   
   <script id="splash-screen-script">
     function removeSplashFromWeb() {
