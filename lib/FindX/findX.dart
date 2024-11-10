@@ -34,10 +34,15 @@ class _FindXState extends State<FindX> {
   }
 
   String getSelectedFormatsString() {
-    List<String> selectedList = selectedFormats.entries.where((entry) => entry.value).map((entry) => "filetype:${entry.key}").toList();
+    List<String> selectedList = selectedFormats.entries
+        .where((entry) => entry.value)
+        .map((entry) => "filetype:${entry.key}")
+        .toList();
 
     if (selectedList.isEmpty) return '';
-    return selectedList.length == 1 ? selectedList.first : "(${selectedList.join(" OR ")})";
+    return selectedList.length == 1
+        ? selectedList.first
+        : "(${selectedList.join(" OR ")})";
   }
 
   @override
@@ -79,7 +84,8 @@ class _FindXState extends State<FindX> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.info_outline, color: secondaryColor.withOpacity(0.7), size: 20),
+                  Icon(Icons.info_outline,
+                      color: secondaryColor.withOpacity(0.7), size: 20),
                   const SizedBox(width: 12),
                   Text(
                     "Select file types for your search",
@@ -310,7 +316,9 @@ class _FindXState extends State<FindX> {
                           color: isSelected ? null : backgroundColor,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: isSelected ? Colors.transparent : primaryColor.withOpacity(0.3),
+                            color: isSelected
+                                ? Colors.transparent
+                                : primaryColor.withOpacity(0.3),
                             width: 1,
                           ),
                           boxShadow: isSelected
@@ -331,7 +339,9 @@ class _FindXState extends State<FindX> {
                               style: GoogleFonts.spaceGrotesk(
                                 color: isSelected ? textColor : secondaryText,
                                 fontSize: 14,
-                                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                                fontWeight: isSelected
+                                    ? FontWeight.w600
+                                    : FontWeight.normal,
                               ),
                             ),
                             if (isSelected) ...[
