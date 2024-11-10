@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       title: 'FindX',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.blueGrey.shade100,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blueGrey,
-          foregroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
+          foregroundColor: Color.fromARGB(255, 0, 0, 0),
         ),
       ),
       home: const FindX(),
