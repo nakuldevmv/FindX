@@ -19,7 +19,6 @@ class _FindXState extends State<FindX> {
   static const surfaceColor = Color(0xFF242632); // Lighter navy
   static const primaryColor = Color(0xFF6C63FF); // Vibrant purple
   static const secondaryColor = Color(0xFF00D9B5); // Turquoise
-  // static const accentColor = Color(0xFFFF6B6B); // Coral
   static const textColor = Color(0xFFF7F7F7); // Off-white
   static const secondaryText = Color(0xFFB4B4B4); // Light gray
 
@@ -34,22 +33,15 @@ class _FindXState extends State<FindX> {
   }
 
   String getSelectedFormatsString() {
-    List<String> selectedList = selectedFormats.entries
-        .where((entry) => entry.value)
-        .map((entry) => "filetype:${entry.key}")
-        .toList();
+    List<String> selectedList = selectedFormats.entries.where((entry) => entry.value).map((entry) => "filetype:${entry.key}").toList();
 
     if (selectedList.isEmpty) return '';
-    return selectedList.length == 1
-        ? selectedList.first
-        : "(${selectedList.join(" OR ")})";
+    return selectedList.length == 1 ? selectedList.first : "(${selectedList.join(" OR ")})";
   }
 
   @override
-  Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
-    final deviceHeight = MediaQuery.of(context).size.height;
-    final isDesktop = deviceWidth > 591;
+  Widget build(context) {
+    final isDesktop = MediaQuery.of(context).size.width > 591;
 
     return Scaffold(
       body: Container(
@@ -75,7 +67,7 @@ class _FindXState extends State<FindX> {
                       )
                     : null,
               ),
-              child: buildHeader(isDesktop),
+              child: isDesktop ? buildDesktopHeader() : buildMobileHeader(),
             ),
 
             // Search Instructions
@@ -84,14 +76,13 @@ class _FindXState extends State<FindX> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.info_outline,
-                      color: secondaryColor.withOpacity(0.7), size: 20),
+                  Icon(Icons.info_outline, color: secondaryColor.withOpacity(0.7), size: 20),
                   const SizedBox(width: 12),
                   Text(
                     "Select file types for your search",
                     style: GoogleFonts.spaceGrotesk(
                       color: secondaryText,
-                      fontSize: 16,
+                      fontSize: MediaQuery.of(context).size.width < 370 ? 12 : 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -101,7 +92,7 @@ class _FindXState extends State<FindX> {
 
             // File Type Selection
             Expanded(
-              child: buildFileTypeSelection(deviceHeight, isDesktop),
+              child: buildFileTypeSelection(MediaQuery.of(context).size.width),
             ),
           ],
         ),
@@ -109,25 +100,26 @@ class _FindXState extends State<FindX> {
     );
   }
 
-  Widget buildHeader(bool isDesktop) {
-    final searchBar = buildSearchBar();
+  Widget buildDesktopHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        buildLogo(),
+        const SizedBox(width: 40),
+        Flexible(child: buildSearchBar()), // Replace Expanded with Flexible
+      ],
+    );
+  }
 
-    return isDesktop
-        ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildLogo(),
-              const SizedBox(width: 40),
-              searchBar,
-            ],
-          )
-        : Column(
-            children: [
-              buildLogo(),
-              const SizedBox(height: 32),
-              searchBar,
-            ],
-          );
+  Widget buildMobileHeader() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        buildLogo(),
+        const SizedBox(height: 32),
+        buildSearchBar(),
+      ],
+    );
   }
 
   Widget buildLogo() {
@@ -176,8 +168,7 @@ class _FindXState extends State<FindX> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            width: 320,
+          Expanded(
             child: TextField(
               controller: _controller,
               style: GoogleFonts.spaceGrotesk(
@@ -213,7 +204,7 @@ class _FindXState extends State<FindX> {
               ),
               child: Container(
                 height: 46,
-                width: 46,
+                width: MediaQuery.of(context).size.width < 480 ? 46 : 120,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     begin: Alignment.topLeft,
@@ -232,10 +223,21 @@ class _FindXState extends State<FindX> {
                     ),
                   ],
                 ),
-                child: const Icon(
-                  Icons.arrow_forward_rounded,
-                  color: textColor,
-                  size: 24,
+                child: Center(
+                  child: MediaQuery.of(context).size.width < 480
+                      ? const Icon(
+                          Icons.arrow_forward_rounded,
+                          color: textColor,
+                          size: 24,
+                        )
+                      : Text(
+                          'Search',
+                          style: GoogleFonts.spaceGrotesk(
+                            color: textColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -245,7 +247,7 @@ class _FindXState extends State<FindX> {
     );
   }
 
-  Widget buildFileTypeSelection(double deviceHeight, bool isDesktop) {
+  Widget buildFileTypeSelection(double deviceWidth) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: ListView.builder(
@@ -280,7 +282,7 @@ class _FindXState extends State<FindX> {
                       category,
                       style: GoogleFonts.spaceGrotesk(
                         color: textColor,
-                        fontSize: 20,
+                        fontSize: deviceWidth < 370 ? 15 : 20,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -306,53 +308,28 @@ class _FindXState extends State<FindX> {
                         ),
                         decoration: BoxDecoration(
                           gradient: isSelected
-                              ? LinearGradient(
+                              ? const LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
                                   colors: [
-                                    primaryColor.withOpacity(0.8),
-                                    secondaryColor.withOpacity(0.8),
+                                    primaryColor,
+                                    secondaryColor,
                                   ],
                                 )
                               : null,
-                          color: isSelected ? null : backgroundColor,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: isSelected
-                                ? Colors.transparent
-                                : primaryColor.withOpacity(0.3),
+                            color: isSelected ? Colors.transparent : secondaryText.withOpacity(0.5),
                             width: 1,
                           ),
-                          boxShadow: isSelected
-                              ? [
-                                  BoxShadow(
-                                    color: primaryColor.withOpacity(0.2),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ]
-                              : null,
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              format,
-                              style: GoogleFonts.spaceGrotesk(
-                                color: isSelected ? textColor : secondaryText,
-                                fontSize: 14,
-                                fontWeight: isSelected
-                                    ? FontWeight.w600
-                                    : FontWeight.normal,
-                              ),
-                            ),
-                            if (isSelected) ...[
-                              const SizedBox(width: 8),
-                              const Icon(
-                                Icons.check_rounded,
-                                color: textColor,
-                                size: 16,
-                              ),
-                            ],
-                          ],
+                        child: Text(
+                          format,
+                          style: GoogleFonts.spaceGrotesk(
+                            color: isSelected ? textColor : secondaryText,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     );
