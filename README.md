@@ -13,8 +13,7 @@ FindX is a powerful tool that uses Google Dorking techniques to help you find fi
 
 1. **Enter your search query**: Type in the keywords or terms you're looking for in the search bar.
 2. **Select file types**: Choose the file types you want to include in your search by tapping on the corresponding options.
-3. **Generate the search query**: Click the search button to generate the Google search query based on your selections.
-4. **Copy and use the query**: Copy the generated search query and use it on Google to find the files and content you're looking for.
+3. **Search**: Click the search button to generate the Google search query based on your selections, and the query will automatically open in a new browser tab, allowing you to quickly search Google.
 
 Here's an example of a sample output query:
 
@@ -24,10 +23,10 @@ Here's an example of a sample output query:
 
 This query will search for files with the name "file_name" or files with "file_name" in the title, and it will look for files in the .docx, .pdf, or .log formats, while excluding pages with the specified file extensions.
 
-## Contributing
+## Deployed Application
 
-If you'd like to contribute to the FindX project, please feel free to submit issues, bug reports, or pull requests on the project's GitHub repository.
+The FindX application has been deployed and is available at the following URL: [FindX Web App](https://findx24.vercel.app/)
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
+You can access the deployed version of the application and use it to find files and content across the web.
+
