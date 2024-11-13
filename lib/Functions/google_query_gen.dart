@@ -1,6 +1,6 @@
-import 'package:findx/Functions/launch_url.dart';
+import 'package:findx/functions/launch_url.dart';
 import 'package:flutter/material.dart';
-import 'package:findx/Functions/notifySnackBar.dart';
+import 'package:findx/functions/notify_snack_bar.dart';
 
 void googleQueryGen(
     BuildContext context, String selectedList, String userInput) {

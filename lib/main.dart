@@ -1,4 +1,4 @@
-import 'package:findx/FindX/findX.dart';
+import 'package:findx/find_x/findX.dart';
 import 'package:flutter/material.dart';
 
 void main() {

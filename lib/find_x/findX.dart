@@ -1,5 +1,5 @@
-import 'package:findx/Data/fileTypes.dart';
-import 'package:findx/Functions/googleQueryGen.dart';
+import 'package:findx/data/file_types.dart';
+import 'package:findx/functions/google_query_gen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,10 +33,15 @@ class _FindXState extends State<FindX> {
   }
 
   String getSelectedFormatsString() {
-    List<String> selectedList = selectedFormats.entries.where((entry) => entry.value).map((entry) => "filetype:${entry.key}").toList();
+    List<String> selectedList = selectedFormats.entries
+        .where((entry) => entry.value)
+        .map((entry) => "filetype:${entry.key}")
+        .toList();
 
     if (selectedList.isEmpty) return '';
-    return selectedList.length == 1 ? selectedList.first : "(${selectedList.join(" OR ")})";
+    return selectedList.length == 1
+        ? selectedList.first
+        : "(${selectedList.join(" OR ")})";
   }
 
   @override
@@ -76,13 +81,15 @@ class _FindXState extends State<FindX> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.info_outline, color: secondaryColor.withOpacity(0.7), size: 20),
+                  Icon(Icons.info_outline,
+                      color: secondaryColor.withOpacity(0.7), size: 20),
                   const SizedBox(width: 12),
                   Text(
                     "Select file types for your search",
                     style: GoogleFonts.spaceGrotesk(
                       color: secondaryText,
-                      fontSize: MediaQuery.of(context).size.width < 370 ? 12 : 16,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 370 ? 12 : 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -191,6 +198,11 @@ class _FindXState extends State<FindX> {
                 ),
               ),
               cursorColor: secondaryColor,
+              onSubmitted: (value) => googleQueryGen(
+                context,
+                getSelectedFormatsString(),
+                value,
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -319,7 +331,9 @@ class _FindXState extends State<FindX> {
                               : null,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: isSelected ? Colors.transparent : secondaryText.withOpacity(0.5),
+                            color: isSelected
+                                ? Colors.transparent
+                                : secondaryText.withOpacity(0.5),
                             width: 1,
                           ),
                         ),
