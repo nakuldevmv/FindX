@@ -14,13 +14,12 @@ class _FindXState extends State<FindX> {
   Map<String, bool> selectedFormats = {};
   final TextEditingController _controller = TextEditingController();
 
-  // Custom Color Palette
-  static const backgroundColor = Color(0xFF1A1B25); // Deep navy blue
-  static const surfaceColor = Color(0xFF242632); // Lighter navy
-  static const primaryColor = Color(0xFF6C63FF); // Vibrant purple
-  static const secondaryColor = Color(0xFF00D9B5); // Turquoise
-  static const textColor = Color(0xFFF7F7F7); // Off-white
-  static const secondaryText = Color(0xFFB4B4B4); // Light gray
+  static const backgroundColor = Color(0xFF1A1B25);
+  static const surfaceColor = Color(0xFF242632);
+  static const primaryColor = Color(0xFF6C63FF);
+  static const secondaryColor = Color(0xFF00D9B5);
+  static const textColor = Color(0xFFF7F7F7);
+  static const secondaryText = Color(0xFFB4B4B4);
 
   @override
   void initState() {
@@ -33,15 +32,10 @@ class _FindXState extends State<FindX> {
   }
 
   String getSelectedFormatsString() {
-    List<String> selectedList = selectedFormats.entries
-        .where((entry) => entry.value)
-        .map((entry) => "filetype:${entry.key}")
-        .toList();
+    List<String> selectedList = selectedFormats.entries.where((entry) => entry.value).map((entry) => "filetype:${entry.key}").toList();
 
     if (selectedList.isEmpty) return '';
-    return selectedList.length == 1
-        ? selectedList.first
-        : "(${selectedList.join(" OR ")})";
+    return selectedList.length == 1 ? selectedList.first : "(${selectedList.join(" OR ")})";
   }
 
   @override
@@ -81,15 +75,13 @@ class _FindXState extends State<FindX> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.info_outline,
-                      color: secondaryColor.withOpacity(0.7), size: 20),
+                  Icon(Icons.info_outline, color: secondaryColor.withOpacity(0.7), size: 20),
                   const SizedBox(width: 12),
                   Text(
                     "Select file types for your search",
                     style: GoogleFonts.spaceGrotesk(
                       color: secondaryText,
-                      fontSize:
-                          MediaQuery.of(context).size.width < 370 ? 12 : 16,
+                      fontSize: MediaQuery.of(context).size.width < 370 ? 12 : 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -113,7 +105,7 @@ class _FindXState extends State<FindX> {
       children: [
         buildLogo(),
         const SizedBox(width: 40),
-        Flexible(child: buildSearchBar()), // Replace Expanded with Flexible
+        Flexible(child: buildSearchBar()),
       ],
     );
   }
@@ -331,9 +323,7 @@ class _FindXState extends State<FindX> {
                               : null,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: isSelected
-                                ? Colors.transparent
-                                : secondaryText.withOpacity(0.5),
+                            color: isSelected ? Colors.transparent : secondaryText.withOpacity(0.5),
                             width: 1,
                           ),
                         ),
