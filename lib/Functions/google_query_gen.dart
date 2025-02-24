@@ -25,9 +25,11 @@ void googleQueryGen(BuildContext context, String selectedList, String userInput)
 
     String search;
     if (containsExcludedExtension) {
-      search = '("$userInput" OR intitle:"$userInput") $selectedList';
+      // search = '("$userInput" OR intitle:"$userInput") $selectedList';
+      search = '"$userInput" $selectedList';
     } else {
-      search = '("$userInput" OR intitle:"$userInput") $selectedList -inurl:(${excludedExtensions.join('|')})';
+      // search = '("$userInput" OR intitle:"$userInput") $selectedList -inurl:(${excludedExtensions.join('|')})';
+      search = '"$userInput" $selectedList -inurl:(${excludedExtensions.join('|')})';
     }
 
     String encodedQuery = Uri.encodeComponent(search);
