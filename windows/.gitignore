@@ -6,6 +6,21 @@ flutter/ephemeral/
 *.userosscache
 *.sln.docstates
 
+# Android specific ignores
+android/.gradle/
+android/app/build/
+*.iml
+.idea/
+*.hprof
+
+# iOS specific ignores
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+
 # Visual Studio build-related files.
 x64/
 x86/
