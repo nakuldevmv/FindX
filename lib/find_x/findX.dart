@@ -1,6 +1,8 @@
+import 'package:findx/Functions/launch_url.dart';
 import 'package:findx/data/file_types.dart';
 import 'package:findx/functions/google_query_gen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FindX extends StatefulWidget {
@@ -32,10 +34,15 @@ class _FindXState extends State<FindX> {
   }
 
   String getSelectedFormatsString() {
-    List<String> selectedList = selectedFormats.entries.where((entry) => entry.value).map((entry) => "filetype:${entry.key}").toList();
+    List<String> selectedList = selectedFormats.entries
+        .where((entry) => entry.value)
+        .map((entry) => "filetype:${entry.key}")
+        .toList();
 
     if (selectedList.isEmpty) return '';
-    return selectedList.length == 1 ? selectedList.first : "(${selectedList.join(" OR ")})";
+    return selectedList.length == 1
+        ? selectedList.first
+        : "(${selectedList.join(" OR ")})";
   }
 
   @override
@@ -75,13 +82,15 @@ class _FindXState extends State<FindX> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.info_outline, color: secondaryColor.withOpacity(0.7), size: 20),
+                  Icon(Icons.info_outline,
+                      color: secondaryColor.withOpacity(0.7), size: 20),
                   const SizedBox(width: 12),
                   Text(
                     "Select file types for your search",
                     style: GoogleFonts.spaceGrotesk(
                       color: secondaryText,
-                      fontSize: MediaQuery.of(context).size.width < 370 ? 12 : 16,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 370 ? 12 : 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -106,6 +115,27 @@ class _FindXState extends State<FindX> {
         buildLogo(),
         const SizedBox(width: 40),
         Flexible(child: buildSearchBar()),
+        const SizedBox(
+          width: 10,
+        ),
+        InkWell(
+          onTap: () => urlLaunch("https://github.com/nakuldevmv"),
+          child: Container(
+            height: 50,
+            width: 50,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            decoration: BoxDecoration(
+              color: surfaceColor,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SvgPicture.asset(
+              'assets/github.svg',
+              color: const Color.fromARGB(255, 255, 255, 255),
+              height: 24,
+              width: 24,
+            ),
+          ),
+        )
       ],
     );
   }
@@ -114,9 +144,36 @@ class _FindXState extends State<FindX> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        buildLogo(),
+        Row(
+          children: [
+            buildLogo(),
+            const Spacer(),
+            const SizedBox(
+              width: 10,
+            ),
+            InkWell(
+              onTap: () => urlLaunch("https://github.com/nakuldevmv"),
+              child: Container(
+                height: 50,
+                width: 50,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: BoxDecoration(
+                  color: surfaceColor,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: SvgPicture.asset(
+                  'assets/github.svg',
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  height: 24,
+                  width: 24,
+                ),
+              ),
+            )
+          ],
+        ),
         const SizedBox(height: 32),
-        buildSearchBar(),
+        buildSearchBar()
       ],
     );
   }
@@ -323,7 +380,9 @@ class _FindXState extends State<FindX> {
                               : null,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: isSelected ? Colors.transparent : secondaryText.withOpacity(0.5),
+                            color: isSelected
+                                ? Colors.transparent
+                                : secondaryText.withOpacity(0.5),
                             width: 1,
                           ),
                         ),

@@ -2,7 +2,8 @@ import 'package:findx/functions/launch_url.dart';
 import 'package:flutter/material.dart';
 import 'package:findx/functions/notify_snack_bar.dart';
 
-void googleQueryGen(BuildContext context, String selectedList, String userInput) {
+void googleQueryGen(
+    BuildContext context, String selectedList, String userInput) {
   if (userInput.isEmpty || selectedList.isEmpty) {
     if (userInput.isEmpty) {
       notifySnackBar(context, "Please Enter a Search Item");
@@ -21,7 +22,8 @@ void googleQueryGen(BuildContext context, String selectedList, String userInput)
       "shtml"
     ];
 
-    bool containsExcludedExtension = excludedExtensions.any((ext) => selectedList.contains(ext));
+    bool containsExcludedExtension =
+        excludedExtensions.any((ext) => selectedList.contains(ext));
 
     String search;
     if (containsExcludedExtension) {
@@ -29,7 +31,8 @@ void googleQueryGen(BuildContext context, String selectedList, String userInput)
       search = '"$userInput" $selectedList';
     } else {
       // search = '("$userInput" OR intitle:"$userInput") $selectedList -inurl:(${excludedExtensions.join('|')})';
-      search = '"$userInput" $selectedList -inurl:(${excludedExtensions.join('|')})';
+      search =
+          '"$userInput" $selectedList -inurl:(${excludedExtensions.join('|')})';
     }
 
     String encodedQuery = Uri.encodeComponent(search);
